@@ -1,0 +1,6 @@
+$ file challenge
+challenge: ELF 64-bit LSB executable
+$ checksec --file=challenge
+RELRO: Full RELRO  Canary: found  NX: enabled  PIE: enabled
+$ python3 solve.py
+flag{example-placeholder}
