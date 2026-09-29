@@ -35,17 +35,34 @@ def infer_outcome(output: str) -> str:
     return "error-like" if ERROR_HINT.search(output) else "observed"
 
 
-def clean(raw: str, keep_flags: bool = False) -> str:
-    raw = ANSI.sub("", raw.replace("\r\n", "\n"))
-    raw = PRIVATE_KEY.sub("[REDACTED PRIVATE KEY]", raw)
-    raw = SECRETS.sub(r"\1[REDACTED]", raw)
+def sanitize(raw: str, keep_flags: bool = False) -> tuple[str, dict]:
+    normalized = raw.replace("\r\n", "\n")
+    ansi_sequences = len(ANSI.findall(normalized))
+    private_keys = len(PRIVATE_KEY.findall(normalized))
+    secret_values = len(SECRETS.findall(normalized))
+    flags = 0 if keep_flags else len(FLAG.findall(normalized))
+
+    sanitized = ANSI.sub("", normalized)
+    sanitized = PRIVATE_KEY.sub("[REDACTED PRIVATE KEY]", sanitized)
+    sanitized = SECRETS.sub(r"\1[REDACTED]", sanitized)
     if not keep_flags:
-        raw = FLAG.sub("[REDACTED FLAG]", raw)
-    return raw
+        sanitized = FLAG.sub("[REDACTED FLAG]", sanitized)
+
+    return sanitized, {
+        "ansi_sequences_removed": ansi_sequences,
+        "private_keys_redacted": private_keys,
+        "secret_values_redacted": secret_values,
+        "flags_redacted": flags,
+        "flags_preserved": bool(keep_flags),
+    }
+
+
+def clean(raw: str, keep_flags: bool = False) -> str:
+    return sanitize(raw, keep_flags)[0]
 
 
 def extract(raw: str, keep_flags: bool = False) -> dict:
-    sanitized = clean(raw, keep_flags)
+    sanitized, redaction_summary = sanitize(raw, keep_flags)
     entries = []
     current = None
     for number, line in enumerate(sanitized.splitlines(), 1):
@@ -75,6 +92,7 @@ def extract(raw: str, keep_flags: bool = False) -> dict:
             "categories": dict(sorted(category_counts.items())),
             "error_like_steps": sum(item["outcome"] == "error-like" for item in entries),
         },
+        "redaction_summary": redaction_summary,
         "entries": entries,
         "unassigned_lines": len(sanitized.splitlines()) - sum(1 + len(x["output"].splitlines()) for x in entries),
     }
@@ -93,6 +111,7 @@ def render(title: str, record: dict) -> str:
         f"- 识别命令数：**{summary.get('commands', len(record['entries']))}**",
         f"- error-like 步骤：**{summary.get('error_like_steps', 0)}**",
         f"- 命令类别：`{json.dumps(summary.get('categories', {}), ensure_ascii=False)}`",
+        f"- 默认脱敏摘要：`{json.dumps(record.get('redaction_summary', {}), ensure_ascii=False)}`",
         "- 分类：待填写",
         "- 环境 / 版本：待填写",
         "",
