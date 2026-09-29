@@ -1,5 +1,17 @@
 # CTF Tracebook
 
+<!-- LR-LAB-CHROME:START -->
+<p align="center">
+  <a href="https://github.com/LLR6"><img alt="LR Lab" src="https://img.shields.io/badge/LR_LAB-0x4C52-0D1117?style=for-the-badge&logo=github&logoColor=white"></a>
+  <img alt="CTF TOOL" src="https://img.shields.io/badge/CTF_TOOL-06B6D4?style=for-the-badge">
+</p>
+<p align="center"><strong>Turn terminal traces into a writeup.</strong><br><sub>Evidence-first, redacted CTF session notes</sub></p>
+<p align="center"><a href="https://github.com/LLR6/lr-ctf-tracebook/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/LLR6/lr-ctf-tracebook?style=flat-square&logo=github&label=stars"></a>
+  <img alt="Last commit" src="https://img.shields.io/github/last-commit/LLR6/lr-ctf-tracebook?style=flat-square"> <img alt="Maintained" src="https://img.shields.io/badge/status-active-success?style=flat-square"></p>
+<p align="center"><a href="https://github.com/LLR6">Profile</a> · <a href="https://github.com/LLR6?tab=repositories">All projects</a> · <a href="https://github.com/LLR6/lr-ctf-tracebook/issues">Issues</a></p>
+<!-- LR-LAB-CHROME:END -->
+
+
 <p align="center"><img src="./docs/media/social-preview.svg" alt="CTF Tracebook — Turn terminal traces into a writeup" width="100%"></p>
 <p align="center"><img src="./docs/media/cli-demo.gif" alt="真实示例：终端记录转换为可核查的复盘草稿" width="100%"></p>
 <p align="center"><sub>示例来自仓库自带的 session.txt；画面为便于阅读的节选。</sub></p>
@@ -65,3 +77,9 @@ ctf-tracebook examples/session.txt --format json
 欢迎提交**去敏**的提示符、换行命令或失败路线样例。下一步可做可编辑时间线、附件哈希与失败尝试分组。验证代码：`python -m unittest discover -s tests`。
 
 作者：LLR6 · MIT License
+
+<!-- LR-LAB-FOOTER:START -->
+---
+<p align="center"><sub>Part of <a href="https://github.com/LLR6">LR Lab</a> · Security × AI × Android × Automation</sub><br><sub>Build things that are useful, inspectable, and reproducible.</sub></p>
+<!-- LR-LAB-FOOTER:END -->
+
