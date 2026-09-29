@@ -6,10 +6,18 @@ build-backend = "setuptools.build_meta"
 name = "lr-ctf-tracebook"
 version = "0.1.0"
 description = "Offline CTF transcript to redacted reproducible writeup draft"
+readme = "README.md"
 requires-python = ">=3.10"
+authors = [{name = "LLR6"}]
+keywords = ["ctf", "writeup", "reproducibility", "redaction", "terminal"]
 
 [project.scripts]
 ctf-tracebook = "tracebook.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/LLR6/lr-ctf-tracebook"
+Repository = "https://github.com/LLR6/lr-ctf-tracebook"
+Issues = "https://github.com/LLR6/lr-ctf-tracebook/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
