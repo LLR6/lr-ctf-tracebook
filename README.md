@@ -110,6 +110,21 @@ JSON v2 还增加会话摘要：
 
 <!-- LR-CONTENT-UPGRADE:END -->
 
+<!-- LR-DEEP-CONTENT:START -->
+### Redaction coverage
+
+JSON v2 现在增加 `redaction_summary`，会记录：
+
+- ANSI 控制序列移除数；
+- private key 遮盖数；
+- secret/token 遮盖数；
+- flag 遮盖数；
+- 是否显式开启了 `--keep-flags`。
+
+工具仍不会声称“已经自动发现所有敏感信息”，但至少能明确告诉使用者：当前已识别并处理了哪些类别、多少项。
+<!-- LR-DEEP-CONTENT:END -->
+
+
 <!-- LR-RELATED:START -->
 ### Related LR Lab projects
 - [Android CI Doctor](https://github.com/LLR6/lr-android-ci-doctor) — evidence-first diagnosis for build logs.
