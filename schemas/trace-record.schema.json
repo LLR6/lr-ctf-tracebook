@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CTF Tracebook record",
+  "type": "object",
+  "required": [
+    "schema",
+    "source_sha256",
+    "summary",
+    "redaction_summary",
+    "entries",
+    "unassigned_lines"
+  ],
+  "properties": {
+    "schema": {
+      "const": "lr-ctf-tracebook/v2"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "commands",
+        "categories",
+        "error_like_steps"
+      ]
+    },
+    "redaction_summary": {
+      "type": "object",
+      "required": [
+        "ansi_sequences_removed",
+        "private_keys_redacted",
+        "secret_values_redacted",
+        "flags_redacted",
+        "flags_preserved"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "line",
+          "command",
+          "output",
+          "category",
+          "outcome"
+        ]
+      }
+    },
+    "unassigned_lines": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}
