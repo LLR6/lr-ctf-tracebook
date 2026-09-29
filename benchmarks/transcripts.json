@@ -1,0 +1,24 @@
+{
+  "schema": "lr-ctf-tracebook-benchmark/v1",
+  "cases": [
+    {
+      "file": "debug-session.txt",
+      "expected_commands": 4,
+      "expected_categories": {
+        "inspection": 2,
+        "debugging": 1,
+        "script": 1
+      },
+      "expected_error_like_steps": 0
+    },
+    {
+      "file": "powershell-session.txt",
+      "expected_commands": 3,
+      "expected_categories": {
+        "shell": 1,
+        "script": 2
+      },
+      "expected_error_like_steps": 1
+    }
+  ]
+}
