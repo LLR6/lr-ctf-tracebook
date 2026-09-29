@@ -1,0 +1,1 @@
+This is ordinary captured output without a shell prompt.\nNothing here should become an invented command.\n
