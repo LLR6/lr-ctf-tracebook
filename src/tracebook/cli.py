@@ -154,6 +154,7 @@ def render(title: str, record: dict) -> str:
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="把授权 CTF 终端记录整理为可核查的复盘草稿")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {package_version()}")
     parser.add_argument("transcript", help="文本记录路径；- 表示 stdin")
     parser.add_argument("--title", default="CTF 复盘草稿")
     parser.add_argument("--format", choices=("md", "json"), default="md")
