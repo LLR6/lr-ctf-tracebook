@@ -1,5 +1,5 @@
 import unittest
-from tracebook.cli import classify_command, extract, infer_outcome, render
+from tracebook.cli import classify_command, extract, infer_outcome, render, sanitize
 
 
 class TranscriptTests(unittest.TestCase):
@@ -28,6 +28,20 @@ class TranscriptTests(unittest.TestCase):
         self.assertEqual(classify_command("unknown-tool --x"), "shell")
         self.assertEqual(infer_outcome(""), "no-output")
         self.assertEqual(infer_outcome("completed"), "observed")
+
+    def test_redaction_summary_counts_removed_material(self):
+        raw = "$ echo x\nflag{demo}\ntoken=secret-value\n-----BEGIN PRIVATE KEY-----\nabc\n-----END PRIVATE KEY-----"
+        text, summary = sanitize(raw)
+        self.assertNotIn("flag{demo}", text)
+        self.assertNotIn("secret-value", text)
+        self.assertEqual(summary["flags_redacted"], 1)
+        self.assertEqual(summary["secret_values_redacted"], 1)
+        self.assertEqual(summary["private_keys_redacted"], 1)
+
+    def test_keep_flags_is_explicit_in_summary(self):
+        record = extract("$ echo x\nflag{demo}", keep_flags=True)
+        self.assertTrue(record["redaction_summary"]["flags_preserved"])
+        self.assertEqual(record["redaction_summary"]["flags_redacted"], 0)
 
 
 if __name__ == "__main__":
