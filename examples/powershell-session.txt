@@ -1,0 +1,8 @@
+PS C:\lab> Get-FileHash .\challenge.bin
+Algorithm       Hash
+---------       ----
+SHA256          0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
+PS C:\lab> python .\inspect.py
+format=PE sections=6
+PS C:\lab> python .\inspect.py --verbose
+Traceback: synthetic demo failure
