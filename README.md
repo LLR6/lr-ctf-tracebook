@@ -82,6 +82,34 @@ ctf-tracebook examples/session.txt --format json
 
 作者：LLR6 · MIT License
 
+<!-- LR-CONTENT-UPGRADE:START -->
+## v0.2：把一次终端会话变成可读的结构
+
+每个提取到的命令现在额外带两个轻量字段：
+
+- `category`：inspection / debugging / script / build / network / shell
+- `outcome`：no-output / observed / error-like
+
+JSON v2 还增加会话摘要：
+
+```json
+{
+  "commands": 6,
+  "categories": {
+    "inspection": 2,
+    "script": 3,
+    "debugging": 1
+  },
+  "error_like_steps": 2
+}
+```
+
+这些标签只用于整理复盘，不代表命令意图，也不伪装成真实退出码。
+
+为什么刻意不自动生成“推理过程”，见 [docs/TRACE_MODEL.md](docs/TRACE_MODEL.md)。
+
+<!-- LR-CONTENT-UPGRADE:END -->
+
 <!-- LR-RELATED:START -->
 ### Related LR Lab projects
 - [Android CI Doctor](https://github.com/LLR6/lr-android-ci-doctor) — evidence-first diagnosis for build logs.
