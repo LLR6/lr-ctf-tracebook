@@ -19,6 +19,12 @@
         "script": 2
       },
       "expected_error_like_steps": 1
+    },
+    {
+      "file": "plain-output.txt",
+      "expected_commands": 0,
+      "expected_categories": {},
+      "expected_error_like_steps": 0
     }
   ]
 }
