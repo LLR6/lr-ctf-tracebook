@@ -4,6 +4,14 @@ import json
 import re
 import sys
 from pathlib import Path
+from importlib.metadata import PackageNotFoundError, version
+
+def package_version():
+    try:
+        return version("lr-ctf-tracebook")
+    except PackageNotFoundError:
+        return "dev"
+
 
 
 ANSI = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1b\\))")
