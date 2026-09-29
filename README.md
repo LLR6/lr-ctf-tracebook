@@ -10,6 +10,7 @@
   <img alt="Last commit" src="https://img.shields.io/github/last-commit/LLR6/lr-ctf-tracebook?style=flat-square"> <img alt="Maintained" src="https://img.shields.io/badge/status-active-success?style=flat-square"></p>
 <p align="center"><a href="https://github.com/LLR6">Profile</a> · <a href="https://github.com/LLR6?tab=repositories">All projects</a> · <a href="https://github.com/LLR6/lr-ctf-tracebook/issues">Issues</a></p>
 <!-- LR-LAB-CHROME:END -->
+<p align="center">[Threat model](docs/THREAT_MODEL.md)</p>
 
 <!-- LR-FAMILY-NAV:START -->
 <p align="center"><a href="#30-秒试玩">30-second demo</a> · <a href="./examples">Examples</a> · <a href="./src">Source</a> · <a href="./tests">Tests</a></p>
