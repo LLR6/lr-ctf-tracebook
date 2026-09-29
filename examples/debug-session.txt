@@ -1,0 +1,8 @@
+$ file challenge
+challenge: ELF 64-bit LSB executable
+$ checksec --file=challenge
+Full RELRO / Canary / NX / PIE
+$ gdb -q ./challenge
+Reading symbols from ./challenge...
+$ python3 analysis.py
+analysis complete
