@@ -27,8 +27,12 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - name: Evaluate transcript fixtures
         run: python scripts/evaluate_transcripts.py benchmarks/transcripts.json --output transcript-benchmark.json --fail-on-regression
+      - name: Hash transcript benchmark
+        run: sha256sum transcript-benchmark.json > transcript-benchmark.json.sha256
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ctf-tracebook-benchmark-${{ matrix.python-version }}
-          path: transcript-benchmark.json
+          path: |
+            transcript-benchmark.json
+            transcript-benchmark.json.sha256
