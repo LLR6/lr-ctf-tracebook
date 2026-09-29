@@ -22,6 +22,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install -e .
+      - run: python -m pip install "jsonschema>=4.23"
       - name: CLI version smoke test
         run: ctf-tracebook --version
       - run: python -m unittest discover -s tests -v
@@ -37,6 +38,10 @@ jobs:
           fi
       - name: Evaluate transcript fixtures
         run: python scripts/evaluate_transcripts.py benchmarks/transcripts.json --output transcript-benchmark.json --fail-on-regression
+      - name: Build trace-record JSON
+        run: ctf-tracebook examples/debug-session.txt --format json > trace-record.json
+      - name: Validate trace-record schema
+        run: python scripts/validate_json_schema.py schemas/trace-record.schema.json trace-record.json
       - name: Hash transcript benchmark
         run: sha256sum transcript-benchmark.json > transcript-benchmark.json.sha256
       - uses: actions/upload-artifact@v4
