@@ -1,20 +1,32 @@
 # Roadmap
 
-## Near term
+## Current foundation
 
-- Add more shell/prompt formats.
-- Improve multiline PowerShell handling.
-- Add redaction fixtures for more secret formats.
-- Add output truncation metadata.
-- Add optional timestamp extraction when present.
+- Bash / PowerShell prompt parsing
+- Command taxonomy
+- Outcome heuristics
+- Source-line evidence
+- SHA-256 source fingerprint
+- Secret / flag / private-key redaction
+- Redaction coverage summary
+- Transcript benchmark CI
 
-## Medium term
+## Next
 
-- Session segmentation.
-- Environment/version metadata extraction.
-- Diff two traces from repeated attempts.
-- Export a compact evidence timeline.
+- zsh / fish prompt fixtures;
+- multiline command handling;
+- richer debugger-session grouping;
+- explicit failed-attempt sections;
+- writeup section templates by challenge category.
+
+## Later
+
+- artifact attachment manifest;
+- local screenshot/reference index;
+- diff between two investigation sessions.
 
 ## Non-goals
 
-The project will not execute transcript commands, connect to targets, or generate exploit logic.
+- executing transcript commands;
+- inventing reasoning that is absent from the trace;
+- automatically publishing unreviewed writeups.
