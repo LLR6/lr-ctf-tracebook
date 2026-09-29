@@ -11,6 +11,10 @@
 <p align="center"><a href="https://github.com/LLR6">Profile</a> · <a href="https://github.com/LLR6?tab=repositories">All projects</a> · <a href="https://github.com/LLR6/lr-ctf-tracebook/issues">Issues</a></p>
 <!-- LR-LAB-CHROME:END -->
 
+<!-- LR-FAMILY-NAV:START -->
+<p align="center"><a href="#30-秒试玩">30-second demo</a> · <a href="./examples">Examples</a> · <a href="./src">Source</a> · <a href="./tests">Tests</a></p>
+<!-- LR-FAMILY-NAV:END -->
+
 
 <p align="center"><img src="./docs/media/social-preview.svg" alt="CTF Tracebook — Turn terminal traces into a writeup" width="100%"></p>
 <p align="center"><img src="./docs/media/cli-demo.gif" alt="真实示例：终端记录转换为可核查的复盘草稿" width="100%"></p>
@@ -77,6 +81,13 @@ ctf-tracebook examples/session.txt --format json
 欢迎提交**去敏**的提示符、换行命令或失败路线样例。下一步可做可编辑时间线、附件哈希与失败尝试分组。验证代码：`python -m unittest discover -s tests`。
 
 作者：LLR6 · MIT License
+
+<!-- LR-RELATED:START -->
+### Related LR Lab projects
+- [Android CI Doctor](https://github.com/LLR6/lr-android-ci-doctor) — evidence-first diagnosis for build logs.
+- [NightWatch](https://github.com/LLR6/Cybersecurity-Detection-Engineering-Android-Automation-Learning-by-Building) — explainable defensive detection experiments.
+- [LR-Agent](https://github.com/LLR6/LR-agent) — automation and reproducibility research.
+<!-- LR-RELATED:END -->
 
 <!-- LR-LAB-FOOTER:START -->
 ---
