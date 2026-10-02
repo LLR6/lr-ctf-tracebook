@@ -1,0 +1,43 @@
+{
+  "schema": "lr-ctf-tracebook/v2",
+  "source_sha256": "5c1532ceac29cfed34425dfd9e417bf27d834b0eb0a38079a13fd9106c5a9ecc",
+  "summary": {
+    "commands": 3,
+    "categories": {
+      "inspection": 2,
+      "script": 1
+    },
+    "error_like_steps": 0
+  },
+  "redaction_summary": {
+    "ansi_sequences_removed": 0,
+    "private_keys_redacted": 0,
+    "secret_values_redacted": 0,
+    "flags_redacted": 1,
+    "flags_preserved": false
+  },
+  "entries": [
+    {
+      "line": 1,
+      "command": "file challenge",
+      "output": "challenge: ELF 64-bit LSB executable",
+      "category": "inspection",
+      "outcome": "observed"
+    },
+    {
+      "line": 3,
+      "command": "checksec --file=challenge",
+      "output": "RELRO: Full RELRO  Canary: found  NX: enabled  PIE: enabled",
+      "category": "inspection",
+      "outcome": "observed"
+    },
+    {
+      "line": 5,
+      "command": "python3 solve.py",
+      "output": "[REDACTED FLAG]",
+      "category": "script",
+      "outcome": "observed"
+    }
+  ],
+  "unassigned_lines": 0
+}

@@ -1,27 +1,16 @@
 # CTF Tracebook
 
-<!-- LR-LAB-CHROME:START -->
-<p align="center">
-  <a href="https://github.com/LLR6"><img alt="LR Lab" src="https://img.shields.io/badge/LR_LAB-0x4C52-0D1117?style=for-the-badge&logo=github&logoColor=white"></a>
-  <img alt="CTF TOOL" src="https://img.shields.io/badge/CTF_TOOL-06B6D4?style=for-the-badge">
-</p>
-<p align="center"><strong>Turn terminal traces into a writeup.</strong><br><sub>Evidence-first, redacted CTF session notes</sub></p>
-<p align="center"><a href="https://github.com/LLR6/lr-ctf-tracebook/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/LLR6/lr-ctf-tracebook?style=flat-square&logo=github&label=stars"></a>
-  <img alt="Last commit" src="https://img.shields.io/github/last-commit/LLR6/lr-ctf-tracebook?style=flat-square"> <img alt="Maintained" src="https://img.shields.io/badge/status-active-success?style=flat-square"></p>
-<p align="center"><a href="https://github.com/LLR6">Profile</a> · <a href="https://github.com/LLR6?tab=repositories">All projects</a> · <a href="https://github.com/LLR6/lr-ctf-tracebook/issues">Issues</a></p>
-<!-- LR-LAB-CHROME:END -->
+### 题解写不出来？先把终端里的证据留住。
 
-<!-- LR-PROJECT-DOCS:START -->
-### Project docs
-[Architecture](./docs/ARCHITECTURE.md) · [Benchmarks](./docs/BENCHMARKS.md) · [Trace model](./docs/TRACE_MODEL.md) · [Threat model](./docs/THREAT_MODEL.md) · [Roadmap](./docs/ROADMAP.md) · [Compatibility](./docs/COMPATIBILITY.md) · [Releasing](./docs/RELEASING.md) · [Support](./SUPPORT.md)
- · [Change risk](./docs/CHANGE_RISK.md) · [Failure modes](./docs/FAILURE_MODES.md)
-<!-- LR-PROJECT-DOCS:END -->
-<p align="center">[Threat model](docs/THREAT_MODEL.md)</p>
+把已有终端文本整理成 Markdown / JSON 复盘草稿：命令、观察、源行号、输入哈希和去敏统计一起保留。适合比赛结束后整理 write-up、回看失败尝试和分享可核查的操作记录。
 
-<!-- LR-FAMILY-NAV:START -->
-<p align="center"><a href="#30-秒试玩">30-second demo</a> · <a href="./examples">Examples</a> · <a href="./src">Source</a> · <a href="./tests">Tests</a></p>
-<!-- LR-FAMILY-NAV:END -->
+[快速体验](#30-秒试玩) · [实跑案例](docs/DEMO.md) · [完整输出](examples/showcase/output.json) · [反馈问题](https://github.com/LLR6/lr-ctf-tracebook/issues)
 
+| 你的场景 | 可以先试什么 |
+| --- | --- |
+| 操作很多，忘了每步做过什么 | 提取命令和对应输出，保留源行号 |
+| 准备公开终端记录 | 查看 flag / 口令 / 私钥去敏统计，再人工复核 |
+| 想继续补充完整题解 | 在草稿中补上自己的推理和失败原因 |
 
 <p align="center"><img src="./docs/media/social-preview.svg" alt="CTF Tracebook — Turn terminal traces into a writeup" width="100%"></p>
 <p align="center"><img src="./docs/media/cli-demo.gif" alt="真实示例：终端记录转换为可核查的复盘草稿" width="100%"></p>
@@ -29,7 +18,7 @@
 <p align="center"><strong>打完一道题，让复盘从证据开始，而不是从记忆开始。</strong></p>
 <p align="center">纯文本终端记录 → 带源行号的 Markdown / JSON 草稿；默认遮盖 flag 与常见口令。</p>
 <p align="center"><a href="#30-秒看懂">30 秒看懂</a> · <a href="#5-分钟开始">5 分钟开始</a> · <a href="#能力与边界">能力与边界</a></p>
-<p align="center"><img alt="Test" src="https://github.com/LLR6/lr-ctf-tracebook/actions/workflows/test.yml/badge.svg"> <img alt="Python 3.10+" src="https://img.shields.io/badge/python-3.10%2B-blue"> <img alt="MIT" src="https://img.shields.io/badge/license-MIT-green"> <img alt="Version 0.1.0" src="https://img.shields.io/badge/version-0.1.0-8b5cf6"></p>
+<p align="center"><img alt="Test" src="https://github.com/LLR6/lr-ctf-tracebook/actions/workflows/test.yml/badge.svg"> <img alt="Python 3.10+" src="https://img.shields.io/badge/python-3.10%2B-blue"> <img alt="MIT" src="https://img.shields.io/badge/license-MIT-green"> </p>
 
 ## 30 秒看懂
 
@@ -82,6 +71,13 @@ ctf-tracebook examples/session.txt --format json
 ## 能力与边界
 
 不执行输入中的任何命令，不连接目标，不推断漏洞原理或“自动解题”。正则去敏无法覆盖所有敏感字段。仅用于有授权的比赛或训练复盘；任何错误归因和遗漏需要人工修订。
+
+
+## 实跑结果与使用案例
+
+本次运行提取 **3 条命令**：2 条 inspection、1 条 script；遮盖 **1 个 flag**，`unassigned_lines` 为 0。输出保留 L1 / L3 / L5 和原始文本 SHA-256。类别与 outcome 是整理标签，不代表真实进程退出码。
+
+[查看运行过程与读结果的方法](docs/DEMO.md) · [查看未经改写的 JSON 输出](examples/showcase/output.json)
 
 ## 参与 / Help Wanted
 
@@ -139,16 +135,12 @@ JSON v2 现在增加 `redaction_summary`，会记录：
 - [LR-Agent](https://github.com/LLR6/LR-agent) — automation and reproducibility research.
 <!-- LR-RELATED:END -->
 
-<!-- LR-ENGINEERING-REF:START -->
-## Engineering Reference
+<details>
+<summary>工程文档与兼容性</summary>
 
-[Architecture](docs/ARCHITECTURE.md) · [Trace model](docs/TRACE_MODEL.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) · [Release checklist](docs/RELEASE_CHECKLIST.md) · [Trace schema](schemas/trace-record.schema.json)
+[Architecture](./docs/ARCHITECTURE.md) · [Benchmarks](./docs/BENCHMARKS.md) · [Trace model](./docs/TRACE_MODEL.md) · [Threat model](./docs/THREAT_MODEL.md) · [Roadmap](./docs/ROADMAP.md) · [Compatibility](./docs/COMPATIBILITY.md) · [Releasing](./docs/RELEASING.md) · [Support](./SUPPORT.md)
+ · [Change risk](./docs/CHANGE_RISK.md) · [Failure modes](./docs/FAILURE_MODES.md)
 
-These files document the project's architecture, safety boundaries, reproducibility assumptions and release process.
-<!-- LR-ENGINEERING-REF:END -->
+[贡献说明](CONTRIBUTING.md) · [版本记录](CHANGELOG.md) · [输出格式](schemas)
 
-<!-- LR-LAB-FOOTER:START -->
----
-<p align="center"><sub>Part of <a href="https://github.com/LLR6">LR Lab</a> · Security × AI × Android × Automation</sub><br><sub>Build things that are useful, inspectable, and reproducible.</sub></p>
-<!-- LR-LAB-FOOTER:END -->
-
+</details>
